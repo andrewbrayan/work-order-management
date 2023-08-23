@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./app/shared/styles/settings.scss";
+@use "./app/shared/styles/tools.scss";
+@use "./app/shared/styles/generic.scss";
+@use "./app/shared/styles/elements.scss";
+@use "./app/shared/styles/components.scss"
