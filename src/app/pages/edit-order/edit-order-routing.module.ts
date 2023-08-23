@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditOrderComponent } from './edit-order.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/baseview/baseview.module').then(m => m.BaseviewModule)
-  },
+    component: EditOrderComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class EditOrderRoutingModule { }
