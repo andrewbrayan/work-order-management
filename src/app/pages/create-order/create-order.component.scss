@@ -1,0 +1,17 @@
+.create {
+  min-height: calc(100vh - 12rem);
+  padding: 2rem 0;
+
+  .create__header {
+    margin: 2rem 0;
+    gap: 1rem;
+  }
+
+  .create__form {
+    gap: 1rem;
+
+    .create__form-title {}
+
+    form {}
+  }
+}

@@ -1,1 +1,33 @@
-<p>create-order works!</p>
+<section class="create flex flex-justify-center">
+  <div class="wrapper">
+    <div class="create__header flex flex-align-center">
+      <button class="btn btn-xxl btn-rounded btn-primary">
+        <figure>
+          <img src="assets/images/icons/back.svg" alt="Volver a la pagina anterior">
+        </figure>
+      </button>
+      <h1 class="create__header-title">Crear orden</h1>
+    </div>
+    <div class="create__form flex flex-column">
+      <h2 class="create__form-title">Datos básicos</h2>
+      <form action="">
+        <div class="form-field">
+          <label for="code">Código único</label>
+          <input type="text" name="code" formControlName="code">
+          <p class="error">error</p>
+        </div>
+        <div class="form-field">
+          <label for="name">Nombre</label>
+          <input type="text" name="name" formControlName="name">
+          <p class="error">error</p>
+        </div>
+        <div class="form-field">
+          <label for="description">Descripción</label>
+          <textarea name="description" formControlName="description" cols="30" rows="10"></textarea>
+          <p class="error">error</p>
+        </div>
+        <button class="btn btn-primary">Guardar Orden</button>
+      </form>
+    </div>
+  </div>
+</section>
