@@ -4,7 +4,7 @@ import { EditOrderComponent } from './edit-order.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':code/:id',
     component: EditOrderComponent
   }
 ];

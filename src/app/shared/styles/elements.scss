@@ -1,16 +1,22 @@
 h1, .h1 {
   font-size: 2em;
-  font-family: var(--semibold);
+  font-family: var(--bold);
 }
 
 h2, .h2 {
   font-size: 1.8em;
-  font-family: var(--semibold);
+  font-family: var(--bold);
 }
 
 h3, .h3 {
   font-size: 1.5em;
-  font-family: var(--regular);
+  font-family: var(--bold);
+}
+
+
+h4, .h4 {
+  font-size: 1.2em;
+  font-family: var(--bold);
 }
 
 p, .text {

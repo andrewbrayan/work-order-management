@@ -1,33 +1,57 @@
 <section class="create flex flex-justify-center">
+  <div class="success-popup flex flex-justify-center flex-align-center" *ngIf="success">
+    <h2 class="success-popup__close" (click)="success = false">X</h2>
+    <h3 class="success-popup__message">Orden guardada correctamente</h3>
+  </div>
   <div class="wrapper">
     <div class="create__header flex flex-align-center">
-      <button class="btn btn-xxl btn-rounded btn-primary">
+      <button class="btn btn-xxl btn-rounded btn-primary" routerLink="/">
         <figure>
           <img src="assets/images/icons/back.svg" alt="Volver a la pagina anterior">
         </figure>
       </button>
       <h1 class="create__header-title">Crear orden</h1>
     </div>
-    <div class="create__form flex flex-column">
+    <div class="create__form flex flex-column flex-align-center">
       <h2 class="create__form-title">Datos básicos</h2>
-      <form action="">
+      <form [formGroup]="orderForm" (submit)="createOrder()">
         <div class="form-field">
           <label for="code">Código único</label>
-          <input type="text" name="code" formControlName="code">
-          <p class="error">error</p>
+          <input type="text" formControlName="code">
+          <p class="error" *ngIf="isErrorControl('code', 'required')">Código único es requerido.</p>
         </div>
         <div class="form-field">
           <label for="name">Nombre</label>
-          <input type="text" name="name" formControlName="name">
-          <p class="error">error</p>
+          <input type="text" formControlName="name">
+          <p class="error" *ngIf="isErrorControl('name', 'required')">Nombre es requerido</p>
+          <p class="error" *ngIf="isErrorControl('name', 'pattern')">Nombre invalido</p>
         </div>
         <div class="form-field">
           <label for="description">Descripción</label>
-          <textarea name="description" formControlName="description" cols="30" rows="10"></textarea>
-          <p class="error">error</p>
+          <textarea formControlName="description" cols="30" rows="7"></textarea>
+          <p class="error" *ngIf="isErrorControl('description', 'required')">Descripción es requerido</p>
+          <p class="error" *ngIf="isErrorControl('description', 'pattern')">Descripción invalido</p>
         </div>
-        <button class="btn btn-primary">Guardar Orden</button>
+        <button class="btn btn-primary" type="submit">Guardar Orden</button>
       </form>
     </div>
   </div>
 </section>
+
+<div class="overlay" *ngIf="confirmation">
+  <div class="popup">
+    <div class="popup__body flex flex-column">
+      <h1 class="popup__title">¿Desea guardar esta orden de trabajo?</h1>
+      <div class="popup__options flex flex-justify-center">
+        <button class="btn btn-primary" (click)="createOrder()">
+          Si, guardar
+        </button>
+        <button class="btn btn-primary" (click)="confirmation = false">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

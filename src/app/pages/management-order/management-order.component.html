@@ -1,1 +1,46 @@
-<p>management-order works!</p>
+<section class="orders flex flex-justify-center">
+  <div class="wrapper">
+    <div class="orders__header flex flex-align-center">
+      <button class="btn btn-xxl btn-rounded btn-primary" routerLink="/">
+        <figure>
+          <img src="assets/images/icons/back.svg" alt="Volver a la pagina anterior">
+        </figure>
+      </button>
+      <h1 class="orders__header-title">Gestionar orden</h1>
+      <div class="orders__search form-field">
+        <input #searchInput type="text" placeholder="Buscar Orden" (keyup)="searchOrder(searchInput.value)">
+        <figure>
+          <img src="assets/images/icons/search.svg" alt="">
+        </figure>
+      </div>
+    </div>
+    <div class="orders__management flex">
+      <div class="orders__filters flex flex-column">
+        <div class="orders__filters-option" (click)="filter1.click(); updateFilter()">
+          <input #filter1 type="radio" name="status" [(ngModel)]="filterSelected" value="activa">
+          <span [ngClass]="{'active': filterSelected == 'activo'}"></span> <h4>Activa</h4>
+        </div>
+        <div class="orders__filters-option" (click)="filter2.click(); updateFilter()">
+          <input #filter2 type="radio" name="status" [(ngModel)]="filterSelected" value="en_proceso">
+          <span [ngClass]="{'active': filterSelected == 'en_proceso'}"></span> <h4>En proceso</h4>
+        </div>
+        <div class="orders__filters-option" (click)="filter3.click(); updateFilter()">
+          <input #filter3 type="radio" name="status" [(ngModel)]="filterSelected" value="terminada">
+          <span [ngClass]="{'active': filterSelected == 'terminada'}"></span> <h4>Terminada</h4>
+        </div>
+        <button class="btn btn-primary" (click)="filterSelected = 'all'; updateFilter()">Limpiar filtros</button>
+      </div>
+      <div class="orders__list flex">
+        <div class="orders__card flex flex-column" *ngFor="let order of orders | async">
+          <h3>Orden: {{ order.code }}</h3>
+          <p>Nombre: {{ order.name }}</p>
+          <p>Fecha de creación: {{ order.createDate }}</p>
+          <p>Estado: {{ order.status }}</p>
+          <figure [routerLink]="['/edit', order.code, order.id]">
+            <img src="assets/images/icons/arrow.svg" alt="">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

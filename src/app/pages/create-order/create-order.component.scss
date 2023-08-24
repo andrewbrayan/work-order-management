@@ -1,17 +1,55 @@
 .create {
+  position: relative;
   min-height: calc(100vh - 12rem);
-  padding: 2rem 0;
 
-  .create__header {
+  .success-popup {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 900;
+    padding: 3rem;
+    background-color: var(--success);
+    color: var(--white);
+
+    &__close {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+
+    &__message {
+      margin: 0 1rem;
+    }
+  }
+
+  &__header {
     margin: 2rem 0;
     gap: 1rem;
   }
 
-  .create__form {
+  &__form {
     gap: 1rem;
 
-    .create__form-title {}
+    form {
+      width: 100%;
+      max-width: 30rem;
+      margin-bottom: 2rem;
 
-    form {}
+      button {
+        margin: auto;
+      }
+    }
+  }
+}
+
+.popup {
+  &__title {
+    margin: 2rem;
+  }
+
+  &__options {
+    margin: 2rem;
+    gap: 2rem;
   }
 }
