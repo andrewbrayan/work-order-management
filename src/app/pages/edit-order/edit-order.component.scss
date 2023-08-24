@@ -1,6 +1,27 @@
 .edit {
   min-height: calc(100vh - 12rem);
 
+  .success-popup {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 900;
+    padding: 3rem;
+    background-color: var(--success);
+    color: var(--white);
+
+    &__close {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+
+    &__message {
+      margin: 0 1rem;
+    }
+  }
+
   &__header {
     margin: 2rem 0;
     gap: 1rem;
@@ -19,17 +40,26 @@
     }
   }
 
-  &__order-info {
-    flex: 0 0 40%;
-    gap: 1rem;
+  &__order-info, &__order-notes {
+    flex: 0 0 50%;
+    gap: 2rem;
     padding: 0 4rem;
 
-  }
+    button {
+      margin: auto;
+    }
 
-  &__order-notes {
-    flex: 0 0 60%;
-    gap: 1rem;
-    padding: 0 1rem;
+    .add-note-form {
+      width: 70%;
+      margin: auto;
+
+      .note-form-row {
+        margin: 0;
+        .form-field {
+          margin: 0;
+        }
+      }
+    }
   }
 
   &__notes-list {
@@ -41,13 +71,25 @@
 
     button {
       gap: 1rem;
-      font-size: 1.3rem;
+      font-size: 0.8rem;
       font-weight: bold;
+      margin: auto;
       cursor: pointer;
 
       figure {
         width: 2rem;
       }
     }
+  }
+}
+
+.popup {
+  &__title {
+    margin: 2rem;
+  }
+
+  &__options {
+    margin: 2rem;
+    gap: 2rem;
   }
 }

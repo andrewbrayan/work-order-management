@@ -32,8 +32,7 @@ export class CreateOrderComponent implements OnInit {
   }
 
   isErrorControl(controlName: string, errorName: string): boolean {
-    return this.orderForm.controls[controlName].hasError(errorName) &&
-           this.orderForm.controls[controlName].touched
+    return this.orderForm.controls[controlName].hasError(errorName) && this.orderForm.controls[controlName].touched
   }
 
   createOrder() {

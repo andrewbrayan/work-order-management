@@ -15,7 +15,7 @@ export class OrdersService {
     return this.httpClient.get<IOrder[]>(`${environment.API_URL}/orders`)
   }
 
-  getOneOrder(id: number) {
+  getOneOrder(id: string) {
     return this.httpClient.get<IOrder[]>(`${environment.API_URL}/orders?code=${id}`)
   }
 

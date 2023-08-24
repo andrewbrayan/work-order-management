@@ -47,40 +47,46 @@
             <p class="error" *ngIf="isErrorControl('description', 'required')">Descripción es requerido</p>
             <p class="error" *ngIf="isErrorControl('description', 'pattern')">Descripción invalido</p>
           </div>
-          <button class="btn btn-primary" type="submit">Guardar Orden</button>
+          <button class="btn btn-primary" type="submit">Actualizar orden</button>
         </form>
       </div>
 
-      <div class="edit__order-notes flex flex-column flex-align-center">
+      <div class="edit__order-notes flex flex-column">
         <h2 class="edit__notes-title">Notas</h2>
         <div class="edit__notes-list flex flex-column">
-          <div class="edit__notes-detail">
-            <p>Entrega inicial  12 - Septiembre - 2023</p>
+          <div class="edit__notes-detail" *ngFor="let note of orderNotes">
+            <p>{{ note.description }} - {{ note.date }}</p>
           </div>
         </div>
-        <div class="edit__notes-add flex flex-column flex-align-center">
+
+        <div class="edit__notes-add flex flex-column">
           <button class="flex flex-align-center" (click)="addNote()">
             <figure>
               <img src="assets/images/icons/plus.svg" alt="Agregar nueva nota">
             </figure>
             Agregar Nota
           </button>
-          <form [formGroup]="editForm">
-            <div class="form-array" formArrayName="notes">
-              <div class="group" *ngFor="let item of notesFormArray.controls; let i = index;">
-                <div class="form-field">
-                  <label for="code">Descripción nota</label>
-                  <input type="text" id="code" [formControlName]="i">
-                </div>
-                <div class="form-field">
-                  <label for="name">Fecha</label>
-                  <input type="date" id="name" [formControlName]="i">
-                </div>
-              </div>
-            </div>
-          </form>
 
-          <button class="btn btn-primary" type="submit">Guardar Orden</button>
+          <div class="add-note-form" [formGroup]="notesForm">
+            <ng-container formArrayName="notes">
+              <ng-container *ngFor="let noteForm of notes.controls; let i = index">
+                <div class="note-form-row" [formGroup]="noteForm">
+                  <div class="form-field">
+                    <label for="code">Descripción nota</label>
+                    <input type="text" id="code" formControlName="description">
+                    <p class="error" *ngIf="noteForm.controls['description'].invalid && noteForm.controls['description'].touched">Descripción es requerido</p>
+                  </div>
+                  <div class="form-field">
+                    <label for="name">Fecha</label>
+                    <input type="date" id="name" formControlName="date">
+                    <p class="error" *ngIf="noteForm.controls['date'].invalid && noteForm.controls['date'].touched">La fecha es requerido</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <button class="btn btn-primary" type="submit" (click)="saveNote()">Guardar Nota</button>
+          </div>
         </div>
       </div>
 
