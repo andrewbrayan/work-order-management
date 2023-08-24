@@ -18,11 +18,11 @@
       <div class="orders__filters flex flex-column">
         <div class="orders__filters-option" (click)="filter1.click(); updateFilter()">
           <input #filter1 type="radio" name="status" [(ngModel)]="filterSelected" value="activa">
-          <span [ngClass]="{'active': filterSelected == 'activo'}"></span> <h4>Activa</h4>
+          <span [ngClass]="{'active': filterSelected == 'activa'}"></span> <h4>Activa</h4>
         </div>
         <div class="orders__filters-option" (click)="filter2.click(); updateFilter()">
           <input #filter2 type="radio" name="status" [(ngModel)]="filterSelected" value="en proceso">
-          <span [ngClass]="{'active': filterSelected == 'en_proceso'}"></span> <h4>En proceso</h4>
+          <span [ngClass]="{'active': filterSelected == 'en proceso'}"></span> <h4>En proceso</h4>
         </div>
         <div class="orders__filters-option" (click)="filter3.click(); updateFilter()">
           <input #filter3 type="radio" name="status" [(ngModel)]="filterSelected" value="terminada">
@@ -31,6 +31,9 @@
         <button class="btn btn-primary" (click)="filterSelected = 'all'; updateFilter()">Limpiar filtros</button>
       </div>
       <div class="orders__list flex">
+        <div class="orders__card-notfound flex flex-justify-center flex-align-center" *ngIf="!(orders | async)?.length">
+          <h2>No se han encontrado ordenes</h2>
+        </div>
         <div class="orders__card flex flex-column" *ngFor="let order of orders | async">
           <h3>Orden: {{ order.code }}</h3>
           <p>Nombre: {{ order.name }}</p>

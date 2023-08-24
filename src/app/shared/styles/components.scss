@@ -130,9 +130,10 @@
   }
 }
 
+
 .wrapper {
   width: 100%;
-  max-width: var(--desktop-md-size);
+  max-width: var(--desktop-sm-size);
 }
 
 @media (min-width: 1921px) {
