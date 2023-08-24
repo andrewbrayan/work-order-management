@@ -54,6 +54,7 @@
       <div class="edit__order-notes flex flex-column">
         <h2 class="edit__notes-title">Notas</h2>
         <div class="edit__notes-list flex flex-column">
+          <p *ngIf="!orderNotes.length">No tienes notas en esta orden</p>
           <div class="edit__notes-detail" *ngFor="let note of orderNotes">
             <p>{{ note.description }} - {{ note.date }}</p>
           </div>

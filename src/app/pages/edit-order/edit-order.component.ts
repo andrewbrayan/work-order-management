@@ -40,6 +40,7 @@ export class EditOrderComponent {
     this.route.params.subscribe(params => {
       this.orderCode = params['code'];
       this.orderService.getOneOrder(this.orderCode).subscribe(([res]) => {
+        console.log('res', res)
         this.createDate = res.createDate;
         this.statusSelected = res.status;
         this.orderNotes = res.notes;

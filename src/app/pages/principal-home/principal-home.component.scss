@@ -1,13 +1,30 @@
 .home {
   min-height: calc(100vh - 12rem);
 
-  .home__title {
+  &__title {
     margin: 3rem 0;
     font-size: 3em;
   }
 
-  .home__options {
+  &__options {
     flex-wrap: wrap;
+    gap: 1rem;
     margin: 3rem 6rem;
+
+    button {
+      margin: auto;
+    }
   }
 }
+
+@media (max-width: 768px) {
+  .home {
+    &__options {
+      margin: 1rem auto;
+
+      button {
+        font-size: 1.5rem;
+      }
+    }
+  }
+ }

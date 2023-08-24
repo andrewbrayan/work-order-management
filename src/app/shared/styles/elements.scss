@@ -13,7 +13,6 @@ h3, .h3 {
   font-family: var(--bold);
 }
 
-
 h4, .h4 {
   font-size: 1.2em;
   font-family: var(--bold);
@@ -50,5 +49,51 @@ p, .text {
 
   &-xs {
     font-size: 0.6em;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 768px) {
+  h1, .h1 {
+    font-size: 1.4em;
+  }
+
+  h2, .h2 {
+    font-size: 1.3em;
+  }
+
+  h3, .h3 {
+    font-size: 1.2em;
+  }
+
+  h4, .h4 {
+    font-size: 1em;
+    font-family: var(--bold);
+  }
+
+  p, a, .text {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 390px) {
+  h1, .h1 {
+    font-size: 1.2em;
+  }
+
+  h2, .h2 {
+    font-size: 1.1em;
+  }
+
+  h3, .h3 {
+    font-size: 1em;
+  }
+
+  h4, .h4 {
+    font-size: 1em;
+    font-family: var(--bold);
+  }
+
+  p, a, .text {
+    font-size: 0.9em;
   }
 }

@@ -32,8 +32,11 @@
   --bold: "RobotoCondensed-Bold", sans-serif;
 
   /* sizes */
-  --desktop-size: 1920px;
-  --desktop-lg-size: 1440px;
-  --desktop-md-size: 1280px;
-  --desktop-sm-size: 1024px;
+  --desktop-lg-size: 1920px; // -0px
+  --desktop-md-size: 1440px; // -480px
+  --desktop-sm-size: 1280px; // -160px
+  --mobile-lg-size: 1024px;  // -256px
+  --mobile-md-size: 768px;   // -256px
+  --mobile-sm-size: 390px;   // -256px
+  --mobile-xs-size: 280px;   // -232px
 }
