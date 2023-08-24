@@ -22,7 +22,7 @@
           <option value="terminada">Terminada</option>
         </select>
       </div>
-      <h3>Fecha de creación: {{ order.createDate }}</h3>
+      <h3>Fecha de creación: {{ createDate }}</h3>
     </div>
 
     <div class="edit__order flex">
@@ -51,34 +51,36 @@
         </form>
       </div>
 
-      <div class="edit__order-notes flex flex-column">
+      <div class="edit__order-notes flex flex-column flex-align-center">
         <h2 class="edit__notes-title">Notas</h2>
-        <div class="edit__notes-list">
+        <div class="edit__notes-list flex flex-column">
           <div class="edit__notes-detail">
             <p>Entrega inicial  12 - Septiembre - 2023</p>
           </div>
         </div>
-        <div class="edit__notes-add">
-          <a>
+        <div class="edit__notes-add flex flex-column flex-align-center">
+          <button class="flex flex-align-center" (click)="addNote()">
             <figure>
               <img src="assets/images/icons/plus.svg" alt="Agregar nueva nota">
             </figure>
             Agregar Nota
-          </a>
-          <!-- <form [formGroup]="editForm" (submit)="editOrder()">
-            <div class="form-field">
-              <label for="code">Código único</label>
-              <input type="text" id="code" formControlName="code">
-              <p class="error" *ngIf="isErrorControl('code', 'required')">Código único es requerido.</p>
+          </button>
+          <form [formGroup]="editForm">
+            <div class="form-array" formArrayName="notes">
+              <div class="group" *ngFor="let item of notesFormArray.controls; let i = index;">
+                <div class="form-field">
+                  <label for="code">Descripción nota</label>
+                  <input type="text" id="code" [formControlName]="i">
+                </div>
+                <div class="form-field">
+                  <label for="name">Fecha</label>
+                  <input type="date" id="name" [formControlName]="i">
+                </div>
+              </div>
             </div>
-            <div class="form-field">
-              <label for="name">Nombre</label>
-              <input type="text" id="name" formControlName="name">
-              <p class="error" *ngIf="isErrorControl('name', 'required')">Nombre es requerido</p>
-              <p class="error" *ngIf="isErrorControl('name', 'pattern')">Nombre invalido</p>
-            </div>
-            <button class="btn btn-primary" type="submit">Guardar Orden</button>
-          </form> -->
+          </form>
+
+          <button class="btn btn-primary" type="submit">Guardar Orden</button>
         </div>
       </div>
 

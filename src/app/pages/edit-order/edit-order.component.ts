@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IOrder } from 'src/app/shared/services/orders/models/orders.interfaces';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { IOrder, Notes } from 'src/app/shared/services/orders/models/orders.interfaces';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,31 +10,38 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-order.component.scss']
 })
 export class EditOrderComponent {
-  statusSelected!: string;
+  statusSelected: string = '';
+  createDate: string = '';
+  orderID!: number;
+
   editForm!: FormGroup
   confirmation: boolean = false;
   success: boolean = false;
-  orderID!: number;
-  order!: IOrder;
 
   constructor(private formBuilder: FormBuilder, private orderService: OrdersService, private route: ActivatedRoute) {
     this.editForm = this.formBuilder.group({
       code: ['' , Validators.required],
       name: ['' , [Validators.required, Validators.pattern(/^[A-Za-záéíóúñÁÉÍÓÚÑ\s]+$/)]],
       description: ['' , [Validators.required, Validators.pattern(/^[A-Za-z0-9áéíóúñÁÉÍÓÚÑ\s]+$/)]],
+      notes: this.formBuilder.array([
+        this.formBuilder.group({
+          noteDescription: '',
+          noteDate: ''
+        })
+      ])
     });
 
     this.route.params.subscribe(params => {
-      this.orderID = params['id'];
-      this.orderService.getOneOrder(this.orderID).subscribe(res => {
-        console.log('res', res)
-        this.order = res
-        this.statusSelected = res.status
+      this.orderID = params['code'];
+      this.orderService.getOneOrder(this.orderID).subscribe(([res]) => {
+        this.createDate = res.createDate;
+        this.statusSelected = res.status;
         this.editForm.setValue({
           code: res.code,
           name: res.name,
-          description: res.description
-        })
+          description: res.description,
+          notes: []
+        });
       });
     });
   }
@@ -44,6 +50,20 @@ export class EditOrderComponent {
     return this.editForm.controls[controlName].hasError(errorName) &&
            this.editForm.controls[controlName].touched
   }
+
+  get notesFormArray(): FormArray {
+    return this.editForm.controls['notes'] as FormArray;
+  }
+
+  addNote() {
+    this.notesFormArray.push(
+      this.formBuilder.group({
+        noteDescription: '',
+        noteDate: ''
+      })
+    );
+  }
+
 
   editOrder() {
     this.editForm.markAllAsTouched();

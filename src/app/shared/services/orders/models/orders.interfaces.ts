@@ -9,6 +9,6 @@ export interface IOrder {
 }
 
 export interface Notes {
-  description: string;
-  date: string;
+  noteDescription: string;
+  noteDate: string;
 }

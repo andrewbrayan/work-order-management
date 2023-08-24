@@ -28,5 +28,26 @@
 
   &__order-notes {
     flex: 0 0 60%;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  &__notes-list {
+    gap: 0.5rem;
+  }
+
+  &__notes-add {
+    gap: 0.5rem;
+
+    button {
+      gap: 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+
+      figure {
+        width: 2rem;
+      }
+    }
   }
 }
