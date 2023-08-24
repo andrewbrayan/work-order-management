@@ -1,0 +1,11 @@
+.header {
+  height: 6rem;
+  padding: 1rem 2rem;
+  background-color: var(--white);
+  border-bottom: 2px solid var(--primary);
+
+  &__brand {
+    display: flex;
+    height: 100%;
+  }
+}

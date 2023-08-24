@@ -1,0 +1,111 @@
+<section class="edit flex flex-justify-center">
+  <div class="success-popup flex flex-justify-center flex-align-center" *ngIf="success">
+    <h2 class="success-popup__close" (click)="success = false">X</h2>
+    <h3 class="success-popup__message">Orden actualizada correctamente</h3>
+  </div>
+
+  <div class="wrapper">
+    <div class="edit__header flex flex-justify-between flex-align-center">
+      <div class="edit__back-button flex flex-align-center">
+        <button class="btn btn-xxl btn-rounded btn-primary" routerLink="/orders">
+          <figure>
+            <img src="assets/images/icons/back.svg" alt="Volver a la pagina anterior">
+          </figure>
+        </button>
+        <h1 class="edit__header-title">Editar orden</h1>
+      </div>
+      <div class="edit__status form-field flex-align-center">
+        <label for="status">Estado:</label>
+        <select id="status" [(ngModel)]="statusSelected">
+          <option value="activa">Activa</option>
+          <option value="en proceso">En Proceso</option>
+          <option value="terminada">Terminada</option>
+        </select>
+      </div>
+      <h3>Fecha de creación: {{ createDate }}</h3>
+    </div>
+
+    <div class="edit__order flex">
+
+      <div class="edit__order-info flex flex-column">
+        <h2 class="edit__form-title">Datos básicos</h2>
+        <form [formGroup]="editForm" (submit)="editOrder()">
+          <div class="form-field">
+            <label for="code">Código único</label>
+            <input type="text" id="code" formControlName="code">
+            <p class="error" *ngIf="isErrorControl('code', 'required')">Código único es requerido.</p>
+          </div>
+          <div class="form-field">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" formControlName="name">
+            <p class="error" *ngIf="isErrorControl('name', 'required')">Nombre es requerido</p>
+            <p class="error" *ngIf="isErrorControl('name', 'pattern')">Nombre invalido</p>
+          </div>
+          <div class="form-field">
+            <label for="description">Descripción</label>
+            <textarea id="description" formControlName="description" cols="30" rows="7"></textarea>
+            <p class="error" *ngIf="isErrorControl('description', 'required')">Descripción es requerido</p>
+            <p class="error" *ngIf="isErrorControl('description', 'pattern')">Descripción invalido</p>
+          </div>
+          <button class="btn btn-primary" type="submit">Actualizar orden</button>
+        </form>
+      </div>
+
+      <div class="edit__order-notes flex flex-column">
+        <h2 class="edit__notes-title">Notas</h2>
+        <div class="edit__notes-list flex flex-column">
+          <div class="edit__notes-detail" *ngFor="let note of orderNotes">
+            <p>{{ note.description }} - {{ note.date }}</p>
+          </div>
+        </div>
+
+        <div class="edit__notes-add flex flex-column">
+          <button class="flex flex-align-center" (click)="addNote()">
+            <figure>
+              <img src="assets/images/icons/plus.svg" alt="Agregar nueva nota">
+            </figure>
+            Agregar Nota
+          </button>
+
+          <div class="add-note-form" [formGroup]="notesForm">
+            <ng-container formArrayName="notes">
+              <ng-container *ngFor="let noteForm of notes.controls; let i = index">
+                <div class="note-form-row" [formGroup]="noteForm">
+                  <div class="form-field">
+                    <label for="code">Descripción nota</label>
+                    <input type="text" id="code" formControlName="description">
+                    <p class="error" *ngIf="noteForm.controls['description'].invalid && noteForm.controls['description'].touched">Descripción es requerido</p>
+                  </div>
+                  <div class="form-field">
+                    <label for="name">Fecha</label>
+                    <input type="date" id="name" formControlName="date">
+                    <p class="error" *ngIf="noteForm.controls['date'].invalid && noteForm.controls['date'].touched">La fecha es requerido</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <button class="btn btn-primary" type="submit" (click)="saveNote()">Guardar Nota</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="overlay" *ngIf="confirmation">
+  <div class="popup">
+    <div class="popup__body flex flex-column">
+      <h1 class="popup__title">¿Desea actualizar esta orden de trabajo?</h1>
+      <div class="popup__options flex flex-justify-center">
+        <button class="btn btn-primary" (click)="editOrder()">
+          Si, actualizar
+        </button>
+        <button class="btn btn-primary" (click)="confirmation = false">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

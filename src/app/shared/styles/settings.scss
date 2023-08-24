@@ -1,0 +1,39 @@
+/* Definimos las Custom fonts */
+@font-face {
+  font-family: "RobotoCondensed-Regular";
+  src: url("../../../assets/fonts/RobotoCondensed-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "RobotoCondensed-Bold";
+  src: url("../../../assets/fonts/RobotoCondensed-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* Definimos las Custom properties */
+:root {
+  /* Colores */
+  --black: #000000;
+  --white: #ffffff;
+  --light-gray: #6c757d;
+  --black-opacity: #000000db;
+  --primary: #F6C105;
+  --secondary: #9c7b03;
+  --danger: #dc3545;
+  --success: #74A741;
+
+  /* Tipografía */
+  --regular: "RobotoCondensed-Regular", sans-serif;
+  --bold: "RobotoCondensed-Bold", sans-serif;
+
+  /* sizes */
+  --desktop-size: 1920px;
+  --desktop-lg-size: 1440px;
+  --desktop-md-size: 1280px;
+  --desktop-sm-size: 1024px;
+}

@@ -1,0 +1,13 @@
+.home {
+  min-height: calc(100vh - 12rem);
+
+  .home__title {
+    margin: 3rem 0;
+    font-size: 3em;
+  }
+
+  .home__options {
+    flex-wrap: wrap;
+    margin: 3rem 6rem;
+  }
+}

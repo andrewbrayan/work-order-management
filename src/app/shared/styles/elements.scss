@@ -1,0 +1,54 @@
+h1, .h1 {
+  font-size: 2em;
+  font-family: var(--bold);
+}
+
+h2, .h2 {
+  font-size: 1.8em;
+  font-family: var(--bold);
+}
+
+h3, .h3 {
+  font-size: 1.5em;
+  font-family: var(--bold);
+}
+
+
+h4, .h4 {
+  font-size: 1.2em;
+  font-family: var(--bold);
+}
+
+p, .text {
+  font-size: 1em;
+  font-family: var(--regular);
+  color: var(--black);
+
+  &-white {
+    color: var(--white);
+  }
+
+  &-primary {
+    color: var(--primary);
+  }
+
+  &-secondary {
+    color: var(--secondary);
+  }
+
+  &-success {
+    color: var(--third);
+  }
+
+  &-danger {
+    color: var(--third);
+  }
+
+  &-sm {
+    font-size: 0.8em;
+  }
+
+  &-xs {
+    font-size: 0.6em;
+  }
+}
