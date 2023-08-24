@@ -1,7 +1,6 @@
 .orders {
   min-height: calc(100vh - 12rem);
 
-
   &__header {
     margin: 2rem 0;
     gap: 1rem;
@@ -55,6 +54,7 @@
     flex-wrap: wrap;
     flex: 0 0 80%;
     gap: 2rem;
+    margin-bottom: 2rem;
   }
 
   &__card {

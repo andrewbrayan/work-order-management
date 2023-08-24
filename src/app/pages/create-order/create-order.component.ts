@@ -50,7 +50,8 @@ export class CreateOrderComponent implements OnInit {
           name: this.orderForm.controls['name'].value,
           description: this.orderForm.controls['description'].value,
           status: 'activa',
-          createDate: moment().format('DD-MMMM-YYYY')
+          createDate: moment().format('DD-MMMM-YYYY'),
+          notes: []
         }
 
         this.orderService.createOrders(order).subscribe(res => {

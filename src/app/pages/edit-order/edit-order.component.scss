@@ -1,0 +1,32 @@
+.edit {
+  min-height: calc(100vh - 12rem);
+
+  &__header {
+    margin: 2rem 0;
+    gap: 1rem;
+  }
+
+  &__back-button {
+    gap: 1rem;
+  }
+
+  &__status {
+    flex-direction: row;
+    margin: 0;
+
+    select {
+      margin: 0;
+    }
+  }
+
+  &__order-info {
+    flex: 0 0 40%;
+    gap: 1rem;
+    padding: 0 4rem;
+
+  }
+
+  &__order-notes {
+    flex: 0 0 60%;
+  }
+}

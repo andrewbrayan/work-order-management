@@ -21,7 +21,7 @@
           <span [ngClass]="{'active': filterSelected == 'activo'}"></span> <h4>Activa</h4>
         </div>
         <div class="orders__filters-option" (click)="filter2.click(); updateFilter()">
-          <input #filter2 type="radio" name="status" [(ngModel)]="filterSelected" value="en_proceso">
+          <input #filter2 type="radio" name="status" [(ngModel)]="filterSelected" value="en proceso">
           <span [ngClass]="{'active': filterSelected == 'en_proceso'}"></span> <h4>En proceso</h4>
         </div>
         <div class="orders__filters-option" (click)="filter3.click(); updateFilter()">

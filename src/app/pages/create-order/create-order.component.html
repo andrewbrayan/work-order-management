@@ -3,6 +3,7 @@
     <h2 class="success-popup__close" (click)="success = false">X</h2>
     <h3 class="success-popup__message">Orden guardada correctamente</h3>
   </div>
+
   <div class="wrapper">
     <div class="create__header flex flex-align-center">
       <button class="btn btn-xxl btn-rounded btn-primary" routerLink="/">
@@ -17,18 +18,18 @@
       <form [formGroup]="orderForm" (submit)="createOrder()">
         <div class="form-field">
           <label for="code">Código único</label>
-          <input type="text" formControlName="code">
+          <input type="text" id="code" formControlName="code">
           <p class="error" *ngIf="isErrorControl('code', 'required')">Código único es requerido.</p>
         </div>
         <div class="form-field">
           <label for="name">Nombre</label>
-          <input type="text" formControlName="name">
+          <input type="text" id="name" formControlName="name">
           <p class="error" *ngIf="isErrorControl('name', 'required')">Nombre es requerido</p>
           <p class="error" *ngIf="isErrorControl('name', 'pattern')">Nombre invalido</p>
         </div>
         <div class="form-field">
           <label for="description">Descripción</label>
-          <textarea formControlName="description" cols="30" rows="7"></textarea>
+          <textarea id="description" formControlName="description" cols="30" rows="7"></textarea>
           <p class="error" *ngIf="isErrorControl('description', 'required')">Descripción es requerido</p>
           <p class="error" *ngIf="isErrorControl('description', 'pattern')">Descripción invalido</p>
         </div>
